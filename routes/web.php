@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('defendants', DefendantController::class);
 
     // مسارات المهام
-    Route::resource('lawsuits.tasks', TaskController::class);
+    Route::resource('tasks', TaskController::class)->except(['show']);
 
     // مسارات السجلات القضائية
     Route::resource('court_records', CourtRecordController::class);

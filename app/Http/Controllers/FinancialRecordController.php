@@ -35,8 +35,8 @@ class FinancialRecordController extends Controller
         $financialRecord = FinancialRecord::create($request->all());
 
 
-        return redirect()->route('lawsuits.index', ['lawsuit_id' => $request->lawsuit_id])
-            ->with('success', 'Financial record created successfully. You can now create a document.');
+        return redirect()->route('tasks.create', ['lawsuit_id' => $request->lawsuit_id])
+            ->with('success', 'تم إنشاء السجل المالي بنجاح. يمكنك الآن إنشاء مهمة.');
     }
 
     public function edit(FinancialRecord $financialRecord)

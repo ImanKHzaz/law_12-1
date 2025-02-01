@@ -14,9 +14,10 @@ class TaskController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('tasks.create');
+        $lawsuitId = $request->query('lawsuit_id'); // استخراج معرف القضية من الرابط
+        return view('tasks.create', compact('lawsuitId'));
     }
 
     public function store(Request $request)
@@ -28,13 +29,15 @@ class TaskController extends Controller
         ]);
 
         Task::create([
-            'lawsuit_id' => $request->lawsuit_id,
+            'lawsuit_id' => $request->input('lawsuit_id'),
             'user_id' => Auth::id(),
-            'task_name' => $request->task_name,
-            'description' => $request->description,
+            'task_name' => $request->input('task_name'),
+            'description' => $request->input('description'),
         ]);
 
-        return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
+        // إعادة توجيه المستخدم إلى صفحة عرض القضية المرتبطة
+        return redirect()->route('lawsuits.show', $request->input('lawsuit_id'))
+            ->with('success', 'تم إنشاء المهمة بنجاح.');
     }
 
     public function edit($id)
