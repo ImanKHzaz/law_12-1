@@ -23,23 +23,27 @@ use App\Http\Controllers\CourtRecordController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FinancialRecordController;
 use App\Http\Controllers\DefendantController;
+use App\Http\Controllers\TaskController;
+
 
 Route::middleware(['auth'])->group(function () {
     // مسارات القضايا
     Route::resource('lawsuits', LawsuitController::class);
 
     // مسارات الموكلين
-    Route::resource('clients',  ClientController::class);
+    Route::resource('clients', ClientController::class);
 
-    // مسارات المدعى عليهم 
+    // مسارات المدعى عليهم
     Route::resource('defendants', DefendantController::class);
+
+    // مسارات المهام
+    Route::resource('lawsuits.tasks', TaskController::class);
 
     // مسارات السجلات القضائية
     Route::resource('court_records', CourtRecordController::class);
 
     // مسارات السجلات المالية
     Route::resource('financial_records', FinancialRecordController::class);
-
 
     Route::resource('documents', DocumentController::class);
 });

@@ -42,6 +42,15 @@
                                 {{ __('عرض الموكلين') }}
                             </a>
                         </div>
+
+                        <!-- زر جدول المهام -->
+                        <div class="bg-gray-100 rounded-lg shadow p-6">
+                            <h3 class="text-lg font-medium text-gray-700">{{ __('جدول المهام') }}</h3>
+                            <p class="mt-2 text-gray-600">{{ __('عرض وإدارة جميع المهام') }}</p>
+                            <a href="{{ route('tasks.index') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-yellow-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-yellow-600 focus:outline-none focus:border-yellow-700 focus:ring focus:ring-yellow-200 active:bg-yellow-700 disabled:opacity-25 transition">
+                                {{ __('عرض المهام') }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
